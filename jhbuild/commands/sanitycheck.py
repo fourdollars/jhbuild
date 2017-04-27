@@ -145,9 +145,12 @@ class cmd_sanitycheck(Command):
 
         # check for "sysdeps --install" deps:
         try:
-            import glib
+            from gi.repository import GLib
         except:
-            uprint(_('%s not found') % 'python-gobject')
+            try:
+                import glib
+            except:
+                uprint(_('%s not found') % 'python-gobject')
         try:
             import dbus.glib
         except:
