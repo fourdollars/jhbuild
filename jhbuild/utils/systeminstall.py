@@ -437,7 +437,7 @@ class AptSystemInstall(SystemInstall):
 
     def _install_packages(self, native_packages):
         logging.info(_('Installing: %(pkgs)s') % {'pkgs': ' '.join(native_packages)})
-        args = self._root_command_prefix_args + ['apt-get', 'install']
+        args = self._root_command_prefix_args + ['apt-get', 'install', '--no-install-recommends']
         args.extend(native_packages)
         subprocess.check_call(args)
 
